@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      G00340711
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="getSettingsPage()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <h1>Weather for {{cityName}}</h1>
+    <img *ngFor="let w of weather" src="http://openweathermap.org/img/wn/{{w.icon}}@2x.png">
+    <h2 *ngFor="let w of weather">{{w.main}}</h2>
+    <p *ngFor="let w of weather">({{w.description}})</p>
+    <br>
+    <h2>Temperature: {{temp}} </h2>
+    <p>(Feels like: {{feels_like}})</p>
+  </ion-item>
+  <ion-item>
+    <button ion-button [disabled]="buttonDisabled" (click)="getNews()">News</button>
+  </ion-item>
+  <ion-item [hidden]="newsButton">
+    <h2>Total News Stories from {{country}}: {{totalNews}}</h2>
+    <ion-list *ngFor="let a of articles">
+      <ion-item>
+        <a href="{{a.url}}" target="_blank">
+          <img src="{{a.urlToImage}}" width="200" height="200">
+        </a>
+        <a href="{{a.url}}" target="_blank">
+          <h4>{{a.title}}</h4>
+        </a>
+        <a href="{{a.url}}" target="_blank">
+          <h4>{{a.description}}</h4>
+        </a>
+      </ion-item>
+    </ion-list>
+  </ion-item>
+</ion-content>
